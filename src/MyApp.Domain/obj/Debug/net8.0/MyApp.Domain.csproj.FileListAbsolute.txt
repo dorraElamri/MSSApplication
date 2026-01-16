@@ -1,0 +1,12 @@
+/Users/dorraamri/Desktop/dotnet8/src/MyApp.Domain/bin/Debug/net8.0/MyApp.Domain.deps.json
+/Users/dorraamri/Desktop/dotnet8/src/MyApp.Domain/bin/Debug/net8.0/MyApp.Domain.dll
+/Users/dorraamri/Desktop/dotnet8/src/MyApp.Domain/bin/Debug/net8.0/MyApp.Domain.pdb
+/Users/dorraamri/Desktop/dotnet8/src/MyApp.Domain/obj/Debug/net8.0/MyApp.Domain.csproj.AssemblyReference.cache
+/Users/dorraamri/Desktop/dotnet8/src/MyApp.Domain/obj/Debug/net8.0/MyApp.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/dorraamri/Desktop/dotnet8/src/MyApp.Domain/obj/Debug/net8.0/MyApp.Domain.AssemblyInfoInputs.cache
+/Users/dorraamri/Desktop/dotnet8/src/MyApp.Domain/obj/Debug/net8.0/MyApp.Domain.AssemblyInfo.cs
+/Users/dorraamri/Desktop/dotnet8/src/MyApp.Domain/obj/Debug/net8.0/MyApp.Domain.csproj.CoreCompileInputs.cache
+/Users/dorraamri/Desktop/dotnet8/src/MyApp.Domain/obj/Debug/net8.0/MyApp.Domain.dll
+/Users/dorraamri/Desktop/dotnet8/src/MyApp.Domain/obj/Debug/net8.0/refint/MyApp.Domain.dll
+/Users/dorraamri/Desktop/dotnet8/src/MyApp.Domain/obj/Debug/net8.0/MyApp.Domain.pdb
+/Users/dorraamri/Desktop/dotnet8/src/MyApp.Domain/obj/Debug/net8.0/ref/MyApp.Domain.dll

@@ -1,0 +1,39 @@
+﻿<Properties StartupConfiguration="{799334D5-B136-475A-8FCF-117987019744}|https">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MyApp">
+            <Node name="src" expanded="True">
+              <Node name="MyApp.API">
+                <Node name="Dependencies" expanded="True">
+                  <Node name="FrameworkReferences" expanded="True" />
+                </Node>
+                <Node name="Controllers" expanded="True" />
+              </Node>
+              <Node name="MyApp.Application">
+                <Node name="Dependencies" expanded="True">
+                  <Node name="PackageDependencies" expanded="True" />
+                </Node>
+                <Node name="DTOs" expanded="True" />
+                <Node name="Interfaces" expanded="True">
+                  <Node name="IAuthService.cs" selected="True" />
+                </Node>
+                <Node name="Services" expanded="True">
+                  <Node name="User" expanded="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.src.MyApp.API PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

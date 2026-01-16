@@ -1,0 +1,19 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1706.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.Infrastructure", "MyApp.Infrastructure.csproj", "{471E7F65-32FC-4657-8E1D-A0230E5FB531}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5065DE2D-5501-481F-88DE-ED6AF4DABC98}
+	EndGlobalSection
+EndGlobal
