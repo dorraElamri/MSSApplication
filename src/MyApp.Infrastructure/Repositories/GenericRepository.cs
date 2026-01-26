@@ -54,5 +54,23 @@ namespace MyApp.Infrastructure.Repositories
         {
             return await _dbSet.Where(predicate).ToListAsync();
         }
+        public async Task<TResult?> GetSingleAsync<TResult>(
+    Expression<Func<T, bool>>? predicate = null,
+    Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
+    Expression<Func<T, TResult>>? selector = null)
+        {
+            IQueryable<T> query = _dbSet;
+
+            if (predicate != null)
+                query = query.Where(predicate);
+
+            if (orderBy != null)
+                query = orderBy(query);
+
+            if (selector != null)
+                return await query.Select(selector).FirstOrDefaultAsync();
+
+            return await query.Cast<TResult>().FirstOrDefaultAsync(); // fallback to full entity
+        }
     }
 }

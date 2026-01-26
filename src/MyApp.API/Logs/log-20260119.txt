@@ -1,0 +1,4 @@
+2026-01-19 10:55:04.255 +01:00 [INF] HTTP POST /api/User/login responded 200 in 398.7260 ms
+2026-01-19 10:56:25.784 +01:00 [INF] HTTP POST /api/User/login responded 200 in 328.4663 ms
+2026-01-19 10:58:34.572 +01:00 [INF] Retrieving all users
+2026-01-19 10:58:34.600 +01:00 [INF] HTTP GET /api/User responded 200 in 86.4674 ms

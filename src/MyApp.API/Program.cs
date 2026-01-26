@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore;
 using MyApp.Application.Interfaces;
 using MyApp.Application.Services.User;
 using MyApp.Infrastructure.Data;
-using MyApp.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
 using Serilog;
+using MyApp.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,6 +42,8 @@ builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositor
 // --------------------
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IOtpCodesRepository, OtpCodesRepository>();
+
 
 // --------------------
 // JWT Authentication
@@ -114,6 +116,21 @@ builder.Host.UseSerilog((ctx, lc) => lc
     .ReadFrom.Configuration(ctx.Configuration)
     .Enrich.FromLogContext());
 
+
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngular",
+        policy =>
+        {
+            policy
+                .WithOrigins("http://localhost:4200")
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
+
+
 var app = builder.Build();
 
 // --------------------
@@ -128,6 +145,15 @@ using (var scope = app.Services.CreateScope())
             await roleManager.CreateAsync(new IdentityRole(role));
     }
 }
+
+
+
+
+
+app.UseCors("AllowAngular");
+
+
+
 
 // --------------------
 // Middleware

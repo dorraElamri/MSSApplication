@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyApp.Application.DTOs;
 using MyApp.Application.Interfaces;
+using MyApp.Application.Interfaces.IOtpService;
 using MyApp.Application.Services.User;
+using MyApp.Domain.Entities;
 
 namespace MyApp.API.Controllers
 {
@@ -14,18 +16,20 @@ namespace MyApp.API.Controllers
     {
         private readonly UserService _userService;
         private readonly IAuthService _authService;
+        private readonly IOtpService _otpService;
 
-        public UserController(UserService userService, IAuthService authService)
+        public UserController(UserService userService, IAuthService authService, IOtpService otpService)
         {
             _userService = userService;
             _authService = authService;
+            _otpService = otpService;
         }
 
         // --------------------
         // LOGIN
         // --------------------
         [HttpPost("login")]
-        [AllowAnonymous] // accessible sans token
+        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginDto dto)
         {
             var result = await _authService.LoginAsync(dto);
@@ -47,9 +51,7 @@ namespace MyApp.API.Controllers
         // CREATE USER
         // --------------------
         [HttpPost]
-        //[Authorize(Policy = "AdminOnly")] // Seul l'admin peut créer un utilisateur
         [AllowAnonymous]
-
         public async Task<IActionResult> Create(CreateUserDto dto)
         {
             var user = await _userService.AddUser(dto);
@@ -60,7 +62,7 @@ namespace MyApp.API.Controllers
         // GET ALL USERS
         // --------------------
         [HttpGet]
-        [Authorize(Policy = "AdminOnly")] // Seul l'admin peut voir tous les utilisateurs
+        [Authorize(Policy = "AdminOnly")]
         public async Task<IActionResult> GetAll()
         {
             var users = await _userService.GetAllUsers();
@@ -71,7 +73,7 @@ namespace MyApp.API.Controllers
         // GET USER BY ID
         // --------------------
         [HttpGet("{id}")]
-        [Authorize(Policy = "AdminOnly")] // Seul l'admin peut accéder à n'importe quel utilisateur
+        [AllowAnonymous]
         public async Task<IActionResult> GetById(string id)
         {
             var user = await _userService.GetUserById(id);
@@ -82,7 +84,7 @@ namespace MyApp.API.Controllers
         // UPDATE USER
         // --------------------
         [HttpPut("{id}")]
-        [Authorize(Policy = "AdminOnly")] // Seul l'admin peut mettre à jour un utilisateur
+        [Authorize(Policy = "AdminOnly")]
         public async Task<IActionResult> Update(string id, UpdateUserDto dto)
         {
             var user = await _userService.UpdateUser(id, dto);
@@ -93,11 +95,75 @@ namespace MyApp.API.Controllers
         // DELETE USER
         // --------------------
         [HttpDelete("{id}")]
-        [Authorize(Policy = "AdminOnly")] // Seul l'admin peut supprimer un utilisateur
+        [Authorize(Policy = "AdminOnly")]
         public async Task<IActionResult> Delete(string id)
         {
             await _userService.DeleteUser(id);
             return Ok(ApiResponse<string>.SuccessResponse(null!, "User deleted successfully"));
         }
+
+        // --------------------
+        // GET CURRENT USER (ME)
+        // --------------------
+        [HttpGet("me")]
+        [Authorize]
+        public async Task<IActionResult> GetCurrentUser()
+        {
+            var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized("User ID not found in token");
+
+            var user = await _userService.GetUserById(userId);
+            if (user == null)
+                return NotFound();
+
+            return Ok(ApiResponse<ApplicationUser>.SuccessResponse(user, "Current user retrieved successfully"));
+        }
+
+        // --------------------
+        // OTP: GENERATE & SEND (FORGOT PASSWORD OR EMAIL VERIFICATION)
+        // --------------------
+        [HttpPost("otp/generate")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GenerateOtp([FromBody] OtpRequestDto dto)
+        {
+            await _otpService.GenerateAndSendOtpAsync(dto.Email, dto.Purpose);
+            return Ok(ApiResponse<string>.SuccessResponse(null, "OTP sent successfully"));
+        }
+        // --------------------
+        // OTP: VERIFY
+        // --------------------
+        [HttpPost("otp/verify")]
+        [AllowAnonymous]
+        public async Task<IActionResult> VerifyOtp([FromBody] OtpVerifyDto dto)
+        {
+            var isValid = await _otpService.VerifyOtpAsync(dto.Email, dto.Code, dto.Purpose);
+            if (!isValid)
+                return BadRequest(ApiResponse<string>.Failure("Invalid or expired OTP"));
+
+            return Ok(ApiResponse<string>.SuccessResponse(null, "OTP verified successfully"));
+        }
+
+        //// --------------------
+        //// RESET PASSWORD USING OTP
+        //// --------------------
+        //[HttpPost("reset-password")]
+        //[AllowAnonymous]
+        //public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordDto dto)
+        //{
+        //    // Vérifie OTP
+        //    var isOtpValid = await _otpService.VerifyOtpAsync(dto.Email, dto.OtpCode, OtpPurpose.ForgotPassword);
+        //    if (!isOtpValid)
+        //        return BadRequest(ApiResponse<string>.Fail("Invalid or expired OTP"));
+
+        //    // Met à jour le mot de passe
+        //    var updated = await _userService.UpdatePasswordByEmailAsync(dto.Email, dto.NewPassword);
+        //    if (!updated)
+        //        return NotFound(ApiResponse<string>.Fail("User not found"));
+
+        //    return Ok(ApiResponse<string>.Success(null, "Password reset successfully"));
+        //}
+
+
     }
 }

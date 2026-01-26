@@ -8,6 +8,7 @@
 /Users/dorraamri/Desktop/dotnet8/src/MyApp.Application/obj/Debug/net8.0/MyApp.Application.AssemblyInfoInputs.cache
 /Users/dorraamri/Desktop/dotnet8/src/MyApp.Application/obj/Debug/net8.0/MyApp.Application.AssemblyInfo.cs
 /Users/dorraamri/Desktop/dotnet8/src/MyApp.Application/obj/Debug/net8.0/MyApp.Application.csproj.CoreCompileInputs.cache
+/Users/dorraamri/Desktop/dotnet8/src/MyApp.Application/obj/Debug/net8.0/MyApp.Application.sourcelink.json
 /Users/dorraamri/Desktop/dotnet8/src/MyApp.Application/obj/Debug/net8.0/MyApp.Ap.B540CA8A.Up2Date
 /Users/dorraamri/Desktop/dotnet8/src/MyApp.Application/obj/Debug/net8.0/MyApp.Application.dll
 /Users/dorraamri/Desktop/dotnet8/src/MyApp.Application/obj/Debug/net8.0/refint/MyApp.Application.dll

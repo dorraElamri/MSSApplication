@@ -11,6 +11,7 @@
 /Users/dorraamri/Desktop/dotnet8/src/MyApp.Infrastructure/obj/Debug/net8.0/MyApp.Infrastructure.AssemblyInfoInputs.cache
 /Users/dorraamri/Desktop/dotnet8/src/MyApp.Infrastructure/obj/Debug/net8.0/MyApp.Infrastructure.AssemblyInfo.cs
 /Users/dorraamri/Desktop/dotnet8/src/MyApp.Infrastructure/obj/Debug/net8.0/MyApp.Infrastructure.csproj.CoreCompileInputs.cache
+/Users/dorraamri/Desktop/dotnet8/src/MyApp.Infrastructure/obj/Debug/net8.0/MyApp.Infrastructure.sourcelink.json
 /Users/dorraamri/Desktop/dotnet8/src/MyApp.Infrastructure/obj/Debug/net8.0/MyApp.In.4513676F.Up2Date
 /Users/dorraamri/Desktop/dotnet8/src/MyApp.Infrastructure/obj/Debug/net8.0/MyApp.Infrastructure.dll
 /Users/dorraamri/Desktop/dotnet8/src/MyApp.Infrastructure/obj/Debug/net8.0/refint/MyApp.Infrastructure.dll

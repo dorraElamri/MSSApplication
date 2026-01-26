@@ -1,29 +1,34 @@
-﻿<Properties StartupConfiguration="{799334D5-B136-475A-8FCF-117987019744}|https">
+﻿<Properties StartupConfiguration="{799334D5-B136-475A-8FCF-117987019744}|https" GitUserInfo="UsingMD">
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="src/MyApp.API/Controllers/UserController.cs">
+    <Files>
+      <File FileName="src/MyApp.API/Program.cs" />
+      <File FileName="src/MyApp.API/appsettings.json" />
+      <File FileName="src/MyApp.Application/Interfaces/IOtpService.cs" />
+      <File FileName="src/MyApp.Application/Services/User/OtpService.cs" />
+      <File FileName="src/MyApp.Application/Services/User/UserService.cs" />
+      <File FileName="src/MyApp.API/Controllers/UserController.cs" Line="170" Column="1" />
+      <File FileName="src/MyApp.Domain/Entities/ApplicationUser.cs" />
+      <File FileName="src/MyApp.Application/DTOs/OtpDtos.cs" />
+      <File FileName="src/MyApp.Application/Services/User/AuthService.cs" />
+      <File FileName="src/MyApp.Application/DTOs/ApiResponse.cs" />
+      <File FileName="src/MyApp.Infrastructure/Repositories/GenericRepository.cs" />
+      <File FileName="src/MyApp.Application/Interfaces/IGenericRepository.cs" />
+      <File FileName="src/MyApp.Infrastructure/Repositories/OtpCodesRepository.cs" />
+      <File FileName="src/MyApp.Application/Interfaces/IOtpCodesRepository.cs" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="MyApp">
+          <Node name="MyApp" expanded="True">
             <Node name="src" expanded="True">
-              <Node name="MyApp.API">
-                <Node name="Dependencies" expanded="True">
-                  <Node name="FrameworkReferences" expanded="True" />
-                </Node>
+              <Node name="MyApp.API" expanded="True">
                 <Node name="Controllers" expanded="True" />
-              </Node>
-              <Node name="MyApp.Application">
-                <Node name="Dependencies" expanded="True">
-                  <Node name="PackageDependencies" expanded="True" />
-                </Node>
-                <Node name="DTOs" expanded="True" />
-                <Node name="Interfaces" expanded="True">
-                  <Node name="IAuthService.cs" selected="True" />
-                </Node>
-                <Node name="Services" expanded="True">
-                  <Node name="User" expanded="True" />
-                </Node>
               </Node>
             </Node>
           </Node>
@@ -32,8 +37,4 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.src.MyApp.API PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

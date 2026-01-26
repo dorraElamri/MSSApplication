@@ -11,6 +11,10 @@ namespace MyApp.Application.Interfaces
         Task UpdateAsync(T entity);
         Task DeleteAsync(string id);
         Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate);
+        Task<TResult?> GetSingleAsync<TResult>(
+    Expression<Func<T, bool>>? predicate = null,
+    Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
+    Expression<Func<T, TResult>>? selector = null);
     }
 }
 
