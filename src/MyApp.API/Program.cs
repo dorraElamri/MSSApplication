@@ -10,6 +10,8 @@ using System.Text;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using MyApp.Infrastructure.Repositories;
+using MyApp.Application.Interfaces.IOtpService;
+using MyApp.Application.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,6 +45,10 @@ builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositor
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IOtpCodesRepository, OtpCodesRepository>();
+builder.Services.AddScoped<IOtpService, OtpService>();
+
+
+
 
 
 // --------------------

@@ -1,0 +1,17 @@
+2026-02-06 09:15:33 INFO Application started successfully
+2026-02-06 09:15:35 DEBUG Initializing PaymentService components
+2026-02-06 09:15:40 INFO traceId=abc123 correlationId=REQ-1001 GET /api/transactions/tx_987654321 182ms
+2026-02-06 09:15:42 WARN traceId=abc123 Slow response detected GET /api/transactions/tx_987654321 950ms
+2026-02-06 09:15:45 ERROR traceId=4f9c2a7b correlationId=REQ-778899 Timeout while calling external payment provider GET /api/payments 5042ms
+2026-02-06 09:15:46 ERROR traceId=4f9c2a7b TaskCanceledException: The operation timed out
+2026-02-06 09:15:47 INFO POST /api/payments completed successfully 210ms
+2026-02-06 09:15:48 DEBUG Cache refresh completed
+2026-02-06 09:15:50 CRITICAL traceId=SYS-999 correlationId=ALERT-01 Database connection lost Exception: SqlException
+2026-02-04 14:15:33.740 +01:00 [INF] HTTP POST /api/User/api/logs responded 200 in 0.5963 ms
+2026-02-04 14:15:38.745 +01:00 [INF] HTTP POST /api/User/api/logs responded 200 in 1.8517 ms
+2026-02-04 14:15:38.747 +01:00 [INF] HTTP POST /api/User/api/logs responded 200 in 1.0413 ms
+2026-02-04 14:15:43.757 +01:00 [INF] HTTP POST /api/User/api/logs responded 200 in 2.7919 ms
+2026-02-04 14:15:43.763 +01:00 [INF] HTTP POST /api/User/api/logs responded 200 in 1.6822 ms
+2026-02-04 14:15:48.771 +01:00 [INF] HTTP POST /api/User/api/logs responded 200 in 3.0505 ms2026-02-06 17:31:58.357 +01:00 [INF] HTTP POST /api/User/api/logs responded 200 in 68.0053 ms
+2026-02-06 17:31:58.389 +01:00 [INF] HTTP POST /api/User/api/logs responded 200 in 8.8920 ms
+2026-02-06 17:31:58.396 +01:00 [INF] HTTP POST /api/User/api/logs responded 200 in 6.1759 ms

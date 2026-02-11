@@ -127,9 +127,11 @@ namespace MyApp.API.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GenerateOtp([FromBody] OtpRequestDto dto)
         {
+            Console.WriteLine($"Email: {dto.Email}, Purpose: {dto.Purpose}");
             await _otpService.GenerateAndSendOtpAsync(dto.Email, dto.Purpose);
             return Ok(ApiResponse<string>.SuccessResponse(null, "OTP sent successfully"));
         }
+
         // --------------------
         // OTP: VERIFY
         // --------------------
@@ -144,26 +146,42 @@ namespace MyApp.API.Controllers
             return Ok(ApiResponse<string>.SuccessResponse(null, "OTP verified successfully"));
         }
 
-        //// --------------------
-        //// RESET PASSWORD USING OTP
-        //// --------------------
-        //[HttpPost("reset-password")]
-        //[AllowAnonymous]
-        //public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordDto dto)
-        //{
-        //    // Vérifie OTP
-        //    var isOtpValid = await _otpService.VerifyOtpAsync(dto.Email, dto.OtpCode, OtpPurpose.ForgotPassword);
-        //    if (!isOtpValid)
-        //        return BadRequest(ApiResponse<string>.Fail("Invalid or expired OTP"));
 
-        //    // Met à jour le mot de passe
-        //    var updated = await _userService.UpdatePasswordByEmailAsync(dto.Email, dto.NewPassword);
-        //    if (!updated)
-        //        return NotFound(ApiResponse<string>.Fail("User not found"));
 
-        //    return Ok(ApiResponse<string>.Success(null, "Password reset successfully"));
-        //}
+        [HttpPost("change-password")]
+        [AllowAnonymous] // accessible via OTP
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDto dto)
+        {
+            try
+            {
+                var user = await _userService.ChangePasswordWithOtpAsync(dto, _otpService);
+                return Ok(ApiResponse<ApplicationUser>.SuccessResponse(user, "Mot de passe changé avec succès"));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiResponse<string>.Failure(ex.Message));
+            }
+        }
 
+
+
+
+        [HttpPost("api/logs")]
+        [AllowAnonymous]
+        public IActionResult Log([FromBody] LogEntry entry)
+        {
+            // save to database / file / whatever
+            return Ok();
+        }
+        /// <summary>
+        /// Structure d'un log à envoyer
+        /// </summary>
+        public class LogEntry
+        {
+            public string Log { get; set; } = string.Empty;
+            public DateTimeOffset Timestamp { get; set; }
+            public string Source { get; set; } = string.Empty;
+        }
 
     }
 }

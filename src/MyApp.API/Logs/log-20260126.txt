@@ -1,3 +1,0 @@
-2026-01-26 14:29:02.735 +01:00 [INF] HTTP GET /apple-touch-icon-precomposed.png responded 404 in 54.3683 ms
-2026-01-26 14:29:02.735 +01:00 [INF] HTTP GET /favicon.ico responded 404 in 54.3705 ms
-2026-01-26 14:29:02.735 +01:00 [INF] HTTP GET /apple-touch-icon.png responded 404 in 54.3687 ms

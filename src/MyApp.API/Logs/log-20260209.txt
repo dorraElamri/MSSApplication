@@ -1,0 +1,4 @@
+2026-02-09 08:54:10.903 +01:00 [INF] HTTP GET /apple-touch-icon.png responded 404 in 46.4865 ms
+2026-02-09 08:54:10.903 +01:00 [INF] HTTP GET /favicon.ico responded 404 in 46.4775 ms
+2026-02-09 08:54:10.903 +01:00 [INF] HTTP GET /apple-touch-icon-precomposed.png responded 404 in 46.4665 ms
+2026-02-09 08:54:16.477 +01:00 [INF] HTTP POST /api/User/api/logs responded 200 in 41.2128 ms

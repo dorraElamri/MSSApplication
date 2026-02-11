@@ -36,5 +36,17 @@ namespace MyApp.Application.DTOs
         [Required(ErrorMessage = "Purpose is required")]
         public OtpPurpose Purpose { get; set; }
     }
+
+
+
+    public class ChangePasswordDto
+    {
+        public string Email { get; set; } = null!;
+        public string NewPassword { get; set; } = null!;
+        public string ConfirmPassword { get; set; } = null!;
+        public int OtpPurpose { get; set; } // 1 = ForgotPassword
+        public string OtpCode { get; set; } = null!;
+    }
+
 }
 

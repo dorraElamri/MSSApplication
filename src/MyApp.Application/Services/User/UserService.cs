@@ -6,6 +6,8 @@ using Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using MyApp.Application.DTOs;
 using MyApp.Application.Interfaces;
+using MyApp.Application.Interfaces.IOtpService;
+using MyApp.Domain.Entities;
 using Serilog;
 
 namespace MyApp.Application.Services.User;
@@ -134,5 +136,31 @@ public class UserService
             Log.Error(ex, "Error while deleting user {UserId}", id);
             throw;
         }
+    }
+
+
+
+
+    public async Task<ApplicationUser> ChangePasswordWithOtpAsync(ChangePasswordDto dto, IOtpService otpService)
+    {
+        
+
+        // Vérifier que le mot de passe et la confirmation correspondent
+        if (dto.NewPassword != dto.ConfirmPassword)
+            throw new Exception("Les mots de passe ne correspondent pas");
+
+        // Récupérer l'utilisateur
+        var user = await _userManager.FindByEmailAsync(dto.Email);
+        if (user == null)
+            throw new Exception("Utilisateur introuvable");
+
+        // Générer un token de réinitialisation du mot de passe
+        var resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
+        var result = await _userManager.ResetPasswordAsync(user, resetToken, dto.NewPassword);
+
+        if (!result.Succeeded)
+            throw new Exception(string.Join(", ", result.Errors.Select(e => e.Description)));
+
+        return user;
     }
 }

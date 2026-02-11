@@ -5,6 +5,8 @@ namespace MyApp.Application.Interfaces
 {
 	public interface IOtpCodesRepository:IGenericRepository<OtpCode>
 	{
-	}
+
+
+    }
 }
 

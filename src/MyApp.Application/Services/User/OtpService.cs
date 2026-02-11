@@ -3,6 +3,7 @@ using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MimeKit;
+using MyApp.Application.DTOs;
 using MyApp.Application.Interfaces;
 using MyApp.Application.Interfaces.IOtpService;
 using MyApp.Domain.Entities;
@@ -74,7 +75,7 @@ public class OtpService : IOtpService
 
         await _otpCodesRepository.AddAsync(otp);
 
-        await SendAsync(
+        /*await SendAsync(
             user.Email!,
             "Your OTP Code",
             $"""
@@ -83,7 +84,7 @@ public class OtpService : IOtpService
             <h1>{code}</h1>
             <p>This code expires in 10 minutes.</p>
             """
-        );
+        );*/
     }
 
     // -----------------------------------
@@ -110,4 +111,7 @@ public class OtpService : IOtpService
 
         return true;
     }
+
+
+    
 }

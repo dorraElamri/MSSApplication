@@ -1,0 +1,46 @@
+2026-01-30 16:52:00.656 +01:00 [INF] HTTP GET /favicon.ico responded 404 in 33.5513 ms
+2026-01-30 16:52:00.656 +01:00 [INF] HTTP GET /apple-touch-icon-precomposed.png responded 404 in 33.5470 ms
+2026-01-30 16:52:00.656 +01:00 [INF] HTTP GET /apple-touch-icon.png responded 404 in 33.5590 ms
+2026-01-30 16:55:03.427 +01:00 [INF] HTTP GET /api/User/me responded 401 in 46.4067 ms
+2026-01-30 16:55:09.564 +01:00 [INF] HTTP GET /api/User/me responded 401 in 4.3483 ms
+2026-01-30 17:06:48.934 +01:00 [INF] HTTP GET /api/User/me responded 401 in 36.3680 ms
+2026-01-30 17:06:50.831 +01:00 [INF] HTTP GET /api/User/me responded 401 in 1.9949 ms
+2026-01-30 17:06:52.767 +01:00 [INF] HTTP GET /api/User/me responded 401 in 2.2366 ms
+2026-01-30 17:23:02.182 +01:00 [ERR] Login failed for string
+System.Exception: Invalid credentials
+   at MyApp.Application.Services.User.AuthService.LoginAsync(LoginDto dto) in /Users/dorraamri/Desktop/dotnet8/src/MyApp.Application/Services/User/AuthService.cs:line 31
+2026-01-30 17:23:02.215 +01:00 [ERR] HTTP POST /api/User/login responded 500 in 178.0015 ms
+System.Exception: Invalid credentials
+   at MyApp.Application.Services.User.AuthService.LoginAsync(LoginDto dto) in /Users/dorraamri/Desktop/dotnet8/src/MyApp.Application/Services/User/AuthService.cs:line 31
+   at MyApp.API.Controllers.UserController.Login(LoginDto dto) in /Users/dorraamri/Desktop/dotnet8/src/MyApp.API/Controllers/UserController.cs:line 35
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-01-30 17:23:02.224 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: Invalid credentials
+   at MyApp.Application.Services.User.AuthService.LoginAsync(LoginDto dto) in /Users/dorraamri/Desktop/dotnet8/src/MyApp.Application/Services/User/AuthService.cs:line 31
+   at MyApp.API.Controllers.UserController.Login(LoginDto dto) in /Users/dorraamri/Desktop/dotnet8/src/MyApp.API/Controllers/UserController.cs:line 35
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
