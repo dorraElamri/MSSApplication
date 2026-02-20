@@ -1,36 +1,28 @@
-﻿############################################
-# Build results
 ############################################
-bin/
-obj/
-out/
-publish/
-artifacts/
+# Build results (all projects)
+############################################
+**/bin/
+**/obj/
+**/out/
+**/publish/
 
 ############################################
 # Visual Studio / Rider / VS Code
 ############################################
-
-# Visual Studio
 .vs/
+.idea/
+.vscode/
+
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
-
-# Rider
-.idea/
-*.sln.iml
-
-# VS Code
-.vscode/
 
 ############################################
 # Logs
 ############################################
 *.log
 logs/
-*.tlog
 
 ############################################
 # OS files
@@ -45,34 +37,33 @@ Thumbs.db
 *.snupkg
 packages/
 .nuget/
-project.lock.json
-project.assets.json
 
 ############################################
-# .NET Core
+# .NET Core / ASP.NET
 ############################################
 *.runtimeconfig.dev.json
 *.deps.json
 
 ############################################
-# Entity Framework
+# Configuration (IMPORTANT 🔐)
 ############################################
-Migrations/*Designer.cs
-Migrations/*Snapshot.cs
+# Ignore local/dev secrets
+src/MyApp.API/appsettings.Development.json
+src/MyApp.API/appsettings.Local.json
+
+# Optional: ignore all env files
+.env
+.env.*
 
 ############################################
-# Secrets / Config (IMPORTANT)
+# Entity Framework Migrations (optional)
 ############################################
-appsettings.Development.json
-appsettings.Local.json
-secrets.json
-
-# user secrets
-secrets/
-*.secrets.json
+# Uncomment if you don't want generated EF files in git
+# **/Migrations/*Designer.cs
+# **/Migrations/*Snapshot.cs
 
 ############################################
-# Test Results
+# Test results
 ############################################
 TestResults/
 *.trx
@@ -80,39 +71,17 @@ TestResults/
 *.coveragexml
 
 ############################################
-# Publish / Deploy
+# Publish / Deployment
 ############################################
 *.publishsettings
 *.pubxml
 *.pubxml.user
 
 ############################################
-# Azure / Cloud
-############################################
-*.azurePubxml
-*.PublishSettings
-
-############################################
-# Docker
-############################################
-docker-compose.override.yml
-
-############################################
-# Resharper
+# Resharper / Rider
 ############################################
 _ReSharper*/
 *.DotSettings.user
-
-############################################
-# Rider
-############################################
-.idea/
-
-############################################
-# Coverage tools
-############################################
-coverage/
-coverage-report/
 
 ############################################
 # Temporary files
@@ -124,11 +93,15 @@ coverage-report/
 *~
 
 ############################################
-# Generated files
+# Coverage
 ############################################
-Generated/
-*.g.cs
-*.designer.cs
+coverage/
+coverage-report/
+
+############################################
+# Docker (if you use it)
+############################################
+docker-compose.override.yml
 
 ############################################
 # Node (if frontend later)
@@ -136,9 +109,3 @@ Generated/
 node_modules/
 dist/
 build/
-
-############################################
-# Environment files
-############################################
-.env
-.env.*
