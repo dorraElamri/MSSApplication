@@ -5,7 +5,7 @@ using MyApp.Application.DTOs;
 using MyApp.Application.Interfaces;
 using MyApp.Application.Interfaces.IOtpService;
 using MyApp.Application.Services.User;
-using MyApp.Domain.Entities;
+//using MyApp.Domain.Entities;
 
 namespace MyApp.API.Controllers
 {
@@ -17,6 +17,7 @@ namespace MyApp.API.Controllers
         private readonly UserService _userService;
         private readonly IAuthService _authService;
         private readonly IOtpService _otpService;
+
 
         public UserController(UserService userService, IAuthService authService, IOtpService otpService)
         {
@@ -166,21 +167,40 @@ namespace MyApp.API.Controllers
 
 
 
-        [HttpPost("api/logs")]
-        [AllowAnonymous]
-        public IActionResult Log([FromBody] LogEntry entry)
+        // GET: api/User/{id}/roles
+        [HttpGet("{id}/roles")]
+        [Authorize(Policy = "AdminOnly")]           // ← ou [Authorize] si tu veux que n'importe quel utilisateur connecté puisse voir les rôles d'un autre
+        public async Task<IActionResult> GetUserRoles(string id)
         {
-            // save to database / file / whatever
-            return Ok();
+            try
+            {
+                var roles = await _userService.GetUserRolesAsync(id);
+                return Ok(ApiResponse<IList<string>>.SuccessResponse(roles, "Rôles récupérés avec succès"));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiResponse<string>.Failure(ex.Message));
+            }
         }
-        /// <summary>
-        /// Structure d'un log à envoyer
-        /// </summary>
-        public class LogEntry
+
+        // GET: api/User/me/roles   ← très utile pour le profil de l'utilisateur connecté
+        [HttpGet("me/roles")]
+        [Authorize]     // Doit être connecté
+        public async Task<IActionResult> GetCurrentUserRoles()
         {
-            public string Log { get; set; } = string.Empty;
-            public DateTimeOffset Timestamp { get; set; }
-            public string Source { get; set; } = string.Empty;
+            var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized("ID utilisateur non trouvé dans le token");
+
+            try
+            {
+                var roles = await _userService.GetUserRolesAsync(userId);
+                return Ok(ApiResponse<IList<string>>.SuccessResponse(roles, "Rôles de l'utilisateur courant récupérés"));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiResponse<string>.Failure(ex.Message));
+            }
         }
 
     }

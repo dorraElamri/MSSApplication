@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gIsHOP35x6SN5ftbKNarmV2Y74a/SHGqiwQHtXQ9p9ZHYlWjVnWUAGZvWUqDQBgrH8EoeTrqHeyyHkYrufIYkA==",
+  "dgSpecHash": "gnGtTUGLk5Thj2inNIxGNPp8aLCS2WSiLvK/ZLtihp2witorZHvDPi1kgW0iE5KeFMY2FmvYZsld/BJzKQzbfA==",
   "success": true,
-  "projectFilePath": "/Users/dorraamri/Desktop/dotnet8/src/MyApp.Domain/MyApp.Domain.csproj",
+  "projectFilePath": "/Users/dorraamri/Desktop/backup/dotnet8/MSSApplication/src/MyApp.Domain/MyApp.Domain.csproj",
   "expectedPackageFiles": [
     "/Users/dorraamri/.nuget/packages/bouncycastle.cryptography/2.6.1/bouncycastle.cryptography.2.6.1.nupkg.sha512",
     "/Users/dorraamri/.nuget/packages/mailkit/4.14.1/mailkit.4.14.1.nupkg.sha512",

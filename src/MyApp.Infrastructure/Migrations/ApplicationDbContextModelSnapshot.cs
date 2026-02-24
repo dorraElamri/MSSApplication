@@ -229,6 +229,122 @@ namespace MyApp.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("MyApp.Domain.Entities.Instance", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ApiKey")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("ApiKeyCreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ApiKeyLastUsedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ApplicationName")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int>("Environment")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Host")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
+                    b.Property<string>("LogPath")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApiKey")
+                        .IsUnique();
+
+                    b.HasIndex("ApplicationName");
+
+                    b.HasIndex("Environment");
+
+                    b.HasIndex("Host");
+
+                    b.ToTable("Instances", (string)null);
+                });
+
+            modelBuilder.Entity("MyApp.Domain.Entities.LogEntry", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Application")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CorrelationId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Environment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("InstanceId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Level")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Service")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset>("Timestamp")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetimeoffset")
+                        .HasDefaultValueSql("SYSDATETIMEOFFSET()");
+
+                    b.Property<string>("TraceId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InstanceId");
+
+                    b.HasIndex("Level");
+
+                    b.HasIndex("Timestamp");
+
+                    b.HasIndex("InstanceId", "Timestamp");
+
+                    b.ToTable("Logs", (string)null);
+                });
+
             modelBuilder.Entity("MyApp.Domain.Entities.OtpCode", b =>
                 {
                     b.Property<int>("IdOtp")
@@ -263,6 +379,31 @@ namespace MyApp.Infrastructure.Migrations
                     b.HasIndex("UserId", "Code", "Purpose");
 
                     b.ToTable("OtpCodes", (string)null);
+                });
+
+            modelBuilder.Entity("MyApp.Domain.Entities.UserInstance", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("InstanceId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InstanceId");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("UserId", "InstanceId")
+                        .IsUnique();
+
+                    b.ToTable("UserInstances", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -316,6 +457,97 @@ namespace MyApp.Infrastructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MyApp.Domain.Entities.LogEntry", b =>
+                {
+                    b.HasOne("MyApp.Domain.Entities.Instance", "Instance")
+                        .WithMany("Logs")
+                        .HasForeignKey("InstanceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.OwnsOne("MyApp.Domain.Entities.ExceptionInfo", "Exception", b1 =>
+                        {
+                            b1.Property<Guid>("LogEntryId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<string>("Message")
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("StackTrace")
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("Type")
+                                .HasMaxLength(200)
+                                .HasColumnType("nvarchar(200)");
+
+                            b1.HasKey("LogEntryId");
+
+                            b1.ToTable("Logs");
+
+                            b1.WithOwner()
+                                .HasForeignKey("LogEntryId");
+                        });
+
+                    b.OwnsOne("MyApp.Domain.Entities.RequestInfo", "Request", b1 =>
+                        {
+                            b1.Property<Guid>("LogEntryId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int?>("DurationMs")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("Endpoint")
+                                .HasMaxLength(200)
+                                .HasColumnType("nvarchar(200)");
+
+                            b1.Property<string>("Method")
+                                .HasMaxLength(10)
+                                .HasColumnType("nvarchar(10)");
+
+                            b1.Property<string>("RequestId")
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("LogEntryId");
+
+                            b1.ToTable("Logs");
+
+                            b1.WithOwner()
+                                .HasForeignKey("LogEntryId");
+                        });
+
+                    b.OwnsOne("MyApp.Domain.Entities.SourceServer", "SourceServer", b1 =>
+                        {
+                            b1.Property<Guid>("LogEntryId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<string>("Ip")
+                                .HasMaxLength(50)
+                                .HasColumnType("nvarchar(50)");
+
+                            b1.Property<string>("Name")
+                                .HasMaxLength(100)
+                                .HasColumnType("nvarchar(100)");
+
+                            b1.HasKey("LogEntryId");
+
+                            b1.ToTable("Logs");
+
+                            b1.WithOwner()
+                                .HasForeignKey("LogEntryId");
+                        });
+
+                    b.Navigation("Exception")
+                        .IsRequired();
+
+                    b.Navigation("Instance");
+
+                    b.Navigation("Request")
+                        .IsRequired();
+
+                    b.Navigation("SourceServer")
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("MyApp.Domain.Entities.OtpCode", b =>
                 {
                     b.HasOne("Domain.Entities.ApplicationUser", "User")
@@ -325,6 +557,37 @@ namespace MyApp.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("MyApp.Domain.Entities.UserInstance", b =>
+                {
+                    b.HasOne("MyApp.Domain.Entities.Instance", "Instance")
+                        .WithMany("UserInstances")
+                        .HasForeignKey("InstanceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.ApplicationUser", "User")
+                        .WithMany("UserInstances")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Instance");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Domain.Entities.ApplicationUser", b =>
+                {
+                    b.Navigation("UserInstances");
+                });
+
+            modelBuilder.Entity("MyApp.Domain.Entities.Instance", b =>
+                {
+                    b.Navigation("Logs");
+
+                    b.Navigation("UserInstances");
                 });
 #pragma warning restore 612, 618
         }

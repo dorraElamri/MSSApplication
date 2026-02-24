@@ -163,4 +163,27 @@ public class UserService
 
         return user;
     }
+
+
+    public async Task<IList<string>> GetUserRolesAsync(string userId)
+    {
+        try
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                throw new Exception("Utilisateur non trouvé");
+            }
+
+            var roles = await _userManager.GetRolesAsync(user);
+            Log.Information("Rôles récupérés pour l'utilisateur {UserId}: {Roles}", userId, string.Join(", ", roles));
+
+            return roles;
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Erreur lors de la récupération des rôles de l'utilisateur {UserId}", userId);
+            throw;
+        }
+    }
 }

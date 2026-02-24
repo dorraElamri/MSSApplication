@@ -72,5 +72,13 @@ namespace MyApp.Infrastructure.Repositories
 
             return await query.Cast<TResult>().FirstOrDefaultAsync(); // fallback to full entity
         }
+
+        public async Task<List<T>> GetRecentAsync(int count = 50)
+        {
+            return await _dbSet
+                .OrderByDescending(x => EF.Property<DateTimeOffset>(x, "Timestamp")) // ← adapte au nom de ta propriété
+                .Take(count)
+                .ToListAsync();
+        }
     }
 }

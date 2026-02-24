@@ -9,12 +9,16 @@
     <None Remove="Services\" />
     <None Remove="Services\User\" />
     <None Remove="DTOs\" />
+    <None Remove="Services\Logs\" />
+    <None Remove="Services\Instance\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
     <Folder Include="Services\" />
     <Folder Include="Services\User\" />
     <Folder Include="DTOs\" />
+    <Folder Include="Services\Logs\" />
+    <Folder Include="Services\Instance\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MailKit" Version="4.14.1" />

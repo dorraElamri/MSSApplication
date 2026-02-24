@@ -15,6 +15,9 @@ namespace MyApp.Application.Interfaces
     Expression<Func<T, bool>>? predicate = null,
     Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
     Expression<Func<T, TResult>>? selector = null);
+        Task<List<T>> GetRecentAsync(int count = 50);
+
+
     }
 }
 

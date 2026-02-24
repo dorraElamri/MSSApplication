@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tIeiSp8CLtOUrxtYYflZbrkxwzdxvknwbkvG3rV/hA0lHzPyeu86i6IvoSmqE0t284ckTsV8tbBRuIWZONhwJg==",
+  "dgSpecHash": "zepj+Y65H5LTkBXZi+SMiOIhXsA1tbCikmadyC3sJyQGPcCOylM7/G+jPEyXOcO+iXB2DGc2UREAkHXGY3h8pA==",
   "success": true,
-  "projectFilePath": "/Users/dorraamri/Desktop/dotnet8/src/MyApp.Infrastructure/MyApp.Infrastructure.csproj",
+  "projectFilePath": "/Users/dorraamri/Desktop/backup/dotnet8/MSSApplication/src/MyApp.Infrastructure/MyApp.Infrastructure.csproj",
   "expectedPackageFiles": [
     "/Users/dorraamri/.nuget/packages/azure.core/1.35.0/azure.core.1.35.0.nupkg.sha512",
     "/Users/dorraamri/.nuget/packages/azure.identity/1.10.3/azure.identity.1.10.3.nupkg.sha512",

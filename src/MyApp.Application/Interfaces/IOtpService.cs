@@ -9,6 +9,7 @@ namespace MyApp.Application.Interfaces.IOtpService
         Task SendAsync(string to, string subject, string body);
         Task GenerateAndSendOtpAsync(string email, OtpPurpose purpose);
         Task<bool> VerifyOtpAsync(string email, string code, OtpPurpose purpose);
+
     }
 }
 

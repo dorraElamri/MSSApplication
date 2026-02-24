@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lVsfqVyjmRtiZGdCPkp0NkKLxEKdqpsfYt35jCQgjcSbbmgZmpCLVa0YqwJmq9Rd9lcz3ePtF+oAwk3LATdUgw==",
+  "dgSpecHash": "BRUPPBv5EvK4ZZjMpiF71pdUNougadwwMhQLtCMCLGBFAoYsI3tnrin62Ln/7Diwz1zttCBYBWHifoL4Smsfcw==",
   "success": true,
-  "projectFilePath": "/Users/dorraamri/Desktop/dotnet8/tests/MyApp.Tests/MyApp.Tests.csproj",
+  "projectFilePath": "/Users/dorraamri/Desktop/backup/dotnet8/MSSApplication/tests/MyApp.Tests/MyApp.Tests.csproj",
   "expectedPackageFiles": [
     "/Users/dorraamri/.nuget/packages/bouncycastle.cryptography/2.6.1/bouncycastle.cryptography.2.6.1.nupkg.sha512",
     "/Users/dorraamri/.nuget/packages/coverlet.collector/6.0.0/coverlet.collector.6.0.0.nupkg.sha512",

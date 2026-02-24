@@ -7933,11 +7933,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/dorraamri/Desktop/dotnet8/tests/MyApp.Tests/MyApp.Tests.csproj",
+      "projectUniqueName": "/Users/dorraamri/Desktop/backup/dotnet8/MSSApplication/tests/MyApp.Tests/MyApp.Tests.csproj",
       "projectName": "MyApp.Tests",
-      "projectPath": "/Users/dorraamri/Desktop/dotnet8/tests/MyApp.Tests/MyApp.Tests.csproj",
+      "projectPath": "/Users/dorraamri/Desktop/backup/dotnet8/MSSApplication/tests/MyApp.Tests/MyApp.Tests.csproj",
       "packagesPath": "/Users/dorraamri/.nuget/packages/",
-      "outputPath": "/Users/dorraamri/Desktop/dotnet8/tests/MyApp.Tests/obj/",
+      "outputPath": "/Users/dorraamri/Desktop/backup/dotnet8/MSSApplication/tests/MyApp.Tests/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/dorraamri/.nuget/NuGet/NuGet.Config"
@@ -7952,8 +7952,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/Users/dorraamri/Desktop/dotnet8/src/MyApp.Application/MyApp.Application.csproj": {
-              "projectPath": "/Users/dorraamri/Desktop/dotnet8/src/MyApp.Application/MyApp.Application.csproj"
+            "/Users/dorraamri/Desktop/backup/dotnet8/MSSApplication/src/MyApp.Application/MyApp.Application.csproj": {
+              "projectPath": "/Users/dorraamri/Desktop/backup/dotnet8/MSSApplication/src/MyApp.Application/MyApp.Application.csproj"
             }
           }
         }

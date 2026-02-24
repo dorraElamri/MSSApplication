@@ -1,10 +1,9 @@
 ﻿<Properties StartupConfiguration="{799334D5-B136-475A-8FCF-117987019744}|https" GitUserInfo="UsingMD">
-  <MonoDevelop.Ide.ItemProperties.src.MyApp.API PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.src.MyApp.API PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workbench ActiveDocument="src/MyApp.Infrastructure/Migrations/ApplicationDbContextModelSnapshot.cs">
     <Files>
       <File FileName="src/MyApp.API/appsettings.json" />
@@ -12,36 +11,19 @@
       <File FileName="src/MyApp.Domain/Entities/ApplicationUser.cs" />
       <File FileName="src/MyApp.Application/Interfaces/IGenericRepository.cs" />
       <File FileName="src/MyApp.Application/DTOs/UserDtos.cs" />
-      <File FileName="src/MyApp.Application/Services/User/UserService.cs" Line="10" Column="29" />
-      <File FileName="src/MyApp.Application/Interfaces/IOtpService.cs" Line="1" Column="1" />
-      <File FileName="src/MyApp.Infrastructure/Migrations/20260126133435_AddOtpTable.Designer.cs" Line="1" Column="1" />
+      <File FileName="src/MyApp.Application/Services/User/UserService.cs" />
+      <File FileName="src/MyApp.Application/Interfaces/IOtpService.cs" />
+      <File FileName="src/MyApp.Infrastructure/Migrations/20260126133435_AddOtpTable.Designer.cs" />
       <File FileName="src/MyApp.Infrastructure/Migrations/ApplicationDbContextModelSnapshot.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="MyApp" expanded="True">
-            <Node name="src" expanded="True">
-              <Node name="MyApp.Application" expanded="True">
-                <Node name="Interfaces" expanded="True" />
-                <Node name="Services" expanded="True">
-                  <Node name="User" expanded="True" />
-                </Node>
-              </Node>
-              <Node name="MyApp.Domain" expanded="True">
-                <Node name="Entities" expanded="True" />
-              </Node>
-              <Node name="MyApp.Infrastructure" expanded="True">
-                <Node name="Migrations" expanded="True">
-                  <Node name="ApplicationDbContextModelSnapshot.cs" selected="True" />
-                </Node>
-                <Node name="Repositories" expanded="True" />
-              </Node>
-            </Node>
-          </Node>
+          <Node name="MyApp" selected="True" />
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

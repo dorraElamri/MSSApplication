@@ -1067,11 +1067,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/dorraamri/Desktop/dotnet8/src/MyApp.Domain/MyApp.Domain.csproj",
+      "projectUniqueName": "/Users/dorraamri/Desktop/backup/dotnet8/MSSApplication/src/MyApp.Domain/MyApp.Domain.csproj",
       "projectName": "MyApp.Domain",
-      "projectPath": "/Users/dorraamri/Desktop/dotnet8/src/MyApp.Domain/MyApp.Domain.csproj",
+      "projectPath": "/Users/dorraamri/Desktop/backup/dotnet8/MSSApplication/src/MyApp.Domain/MyApp.Domain.csproj",
       "packagesPath": "/Users/dorraamri/.nuget/packages/",
-      "outputPath": "/Users/dorraamri/Desktop/dotnet8/src/MyApp.Domain/obj/",
+      "outputPath": "/Users/dorraamri/Desktop/backup/dotnet8/MSSApplication/src/MyApp.Domain/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/dorraamri/.nuget/NuGet/NuGet.Config"
@@ -1092,11 +1092,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {

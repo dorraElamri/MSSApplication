@@ -12,7 +12,11 @@ using Serilog;
 using MyApp.Infrastructure.Repositories;
 using MyApp.Application.Interfaces.IOtpService;
 using MyApp.Application.Services;
+using MyApp.Application.Services.log;
+using MyApp.Application.Interfaces.ILogRepository;
 
+
+// ← Ajoute ce using en haut si ce n'est pas déjà fait
 var builder = WebApplication.CreateBuilder(args);
 
 // --------------------
@@ -26,6 +30,10 @@ builder.Services.AddEndpointsApiExplorer();
 // --------------------
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
+//builder.Services.AddScoped<ILogRepository, LogRepository>();
+
 
 // --------------------
 // Identity
@@ -46,6 +54,17 @@ builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IOtpCodesRepository, OtpCodesRepository>();
 builder.Services.AddScoped<IOtpService, OtpService>();
+builder.Services.AddScoped<ILogRepository, LogRepository>();
+builder.Services.AddScoped<ILogService, LogService>();
+
+builder.Services.AddScoped<IInstanceRepository, InstanceRepository>();
+builder.Services.AddScoped<IUserInstanceRepository, UserInstanceRepository>();
+
+// 2. Services métier
+builder.Services.AddScoped<IInstanceService, InstanceService>();
+builder.Services.AddScoped<IUserInstanceService, UserInstanceService>();
+
+
 
 
 
